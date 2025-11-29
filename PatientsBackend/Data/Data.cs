@@ -3,7 +3,7 @@ using Models;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace ApiPacientes.Data
+namespace Data
 {
 public class ApplicationDbContext : DbContext
 {
