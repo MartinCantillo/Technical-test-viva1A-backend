@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace ApiPacientes.Models
+namespace Models
 {
 public class Patient
 {
