@@ -98,3 +98,4 @@ La API depende de la base de datos bdPatient y de que los procedimientos almacen
 La arquitectura con Repository Pattern permite un código más limpio, mantenible y escalable.
 
 
+Ademas se adjunta proyecto con pruebas unitarias para su ejecucion
