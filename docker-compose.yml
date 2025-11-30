@@ -5,22 +5,26 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqlserver-patients
     environment:
-      SA_PASSWORD: "Container123!"   
+      SA_PASSWORD: "Container123!"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d  
+      - sqlserverdata:/var/opt/mssql
+      - ./sql:/docker-entrypoint-initdb.d
 
-  api:
+  api:   
     build:
-      context: ./PatientsBackend   
+      context: ./PatientsBackend
       dockerfile: Dockerfile
     container_name: api-patients
     ports:
-      - "5000:5000"
-      - "5001:5001"
+      - "8080:8080"
     environment:
-      ConnectionStrings__DefaultConnection: "Server=db,1433;Database=bdPatient;User Id=sa;Password=container123;TrustServerCertificate=True;"
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: "Server=db,1433;Database=bdPatient;User Id=sa;Password=Container123!;TrustServerCertificate=True;"
     depends_on:
       - db
+
+volumes:
+  sqlserverdata:
